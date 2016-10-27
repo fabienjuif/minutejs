@@ -1,0 +1,23 @@
+{
+  "name": "minutejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "async": "BABEL_ENV=cjs babel ./src/async --out-dir build > /dev/null && node build/async",
+    "rest": "BABEL_ENV=cjs babel ./src/rest --out-dir build > /dev/null && node build/restspread"
+  },
+  "author": "Fabien JUIF",
+  "license": "MIT",
+  "dependencies": {
+    "co": "^4.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-es2015-parameters": "^6.18.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0"
+  }
+}
