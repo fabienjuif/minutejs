@@ -17,7 +17,33 @@ const chainAnimationsPromise = (elem, animations) => {
     .then(val => val || ret)
 }
 
-const chain = chainAnimationsPromise
+const chainAnimationsGenerator = (elem, animations) => {
+  return co(function *() {
+    let ret = null
+
+    try {
+      for(const anim of animations) {
+        ret = yield anim(elem)
+      }
+    } catch (e) {} // ignore and keep going
+
+    return ret
+  })
+}
+
+const chainAnimationsAsync = async (elem, animations) => {
+  let ret = null
+
+  try {
+    for(const anim of animations) {
+      ret = await anim(elem)
+    }
+  } catch (e) {} // ignore and keep going
+
+  return ret
+}
+
+const chain = chainAnimationsAsync
 
 chain(
   { name: 'Jon SNOW' },
